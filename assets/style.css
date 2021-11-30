@@ -44,13 +44,46 @@ body {
   padding: 0;
   height: 100vh;
   background-color: #3A4663;
+}
+
+button,
+input,
+h1,
+span {
   font-family: "Spartan", sans-serif;
   font-weight: 700;
+}
+
+h1,
+span,
+input,
+.operator,
+.result {
+  color: #fff;
+}
+
+input,
+button,
+.keys-container {
+  border-radius: 10px;
+}
+
+h1,
+button {
+  font-size: 32px;
+  line-height: 35.84px;
+  letter-spacing: -0.53px;
+  margin: 0;
 }
 
 main {
   display: flex;
   height: 100%;
+}
+
+.main-container {
+  max-width: 540px;
+  margin: 50px auto;
 }
 
 .container {
@@ -59,28 +92,12 @@ main {
   grid-template-rows: auto;
 }
 
-.main-container {
-  max-width: 540px;
-  margin: 50px auto;
-}
-
-.logo h1 {
-  margin: 0;
-  color: #fff;
-  font-size: 32px;
-  line-height: 35.84px;
-  letter-spacing: -0.53px;
-}
-
 .theme {
   text-align: right;
 }
 .theme span {
-  font-family: "Spartan", sans-serif;
-  font-weight: 700;
   font-size: 12px;
   line-height: 13.44px;
-  color: #fff;
   vertical-align: sub;
 }
 
@@ -91,14 +108,11 @@ main {
   box-sizing: border-box;
   background-color: #181F33;
   font-size: 48px;
-  font-weight: 700;
-  color: #fff;
   line-height: 53.76px;
   letter-spacing: -0.8px;
   text-align: right;
   padding: 36px 32px;
   border: none;
-  border-radius: 10px;
   width: 100%;
 }
 
@@ -106,17 +120,11 @@ main {
   padding: 32px;
   background-color: #242D44;
   grid-gap: 25px;
-  border-radius: 10px;
   margin-top: 24px;
 }
 .keys-container button {
-  font-family: "Spartan", sans-serif;
-  font-weight: 700;
   border: none;
-  border-radius: 10px;
-  line-height: 35.84px;
   padding: 10px 14px 14px 14px;
-  font-size: 32px;
 }
 .keys-container button:hover {
   cursor: pointer;
@@ -124,8 +132,7 @@ main {
 .keys-container .keys {
   background-color: #EAE3DC;
   box-shadow: inset 0px -4px 0px #B3A497;
-  color: #434A59;
-  letter-spacing: -0.53px;
+  color: #53555a;
 }
 .keys-container .keys:hover {
   background-color: #FFFFFE;
@@ -133,7 +140,6 @@ main {
 .keys-container .operator {
   background-color: #647198;
   box-shadow: inset 0px -4px 0px #414E73;
-  color: #fff;
   font-size: 20px;
   letter-spacing: -0.33px;
 }
@@ -143,7 +149,6 @@ main {
 .keys-container .result {
   background-color: #D03F2F;
   box-shadow: inset 0px -4px 0px #93261A;
-  color: #fff;
 }
 .keys-container .result:hover {
   background-color: #F96B5B;
