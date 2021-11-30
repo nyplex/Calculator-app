@@ -1,11 +1,152 @@
 @import url("https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;700&display=swap");
-.attribution {
-  font-size: 11px;
-  text-align: center;
+.col-start-1 {
+  grid-column-start: 1;
 }
 
-.attribution a {
-  color: #3e52a3;
+.col-start-2 {
+  grid-column-start: 2;
+}
+
+.col-start-3 {
+  grid-column-start: 3;
+}
+
+.col-start-4 {
+  grid-column-start: 4;
+}
+
+.col-start-5 {
+  grid-column-start: 5;
+}
+
+.col-end-1 {
+  grid-column-end: 1;
+}
+
+.col-end-2 {
+  grid-column-end: 2;
+}
+
+.col-end-3 {
+  grid-column-end: 3;
+}
+
+.col-end-4 {
+  grid-column-end: 4;
+}
+
+.col-end-5 {
+  grid-column-end: 5;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  background-color: #3A4663;
+  font-family: "Spartan", sans-serif;
+  font-weight: 700;
+}
+
+main {
+  display: flex;
+  height: 100%;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: auto;
+}
+
+.main-container {
+  max-width: 540px;
+  margin: 50px auto;
+}
+
+.logo h1 {
+  margin: 0;
+  color: #fff;
+  font-size: 32px;
+  line-height: 35.84px;
+  letter-spacing: -0.53px;
+}
+
+.theme {
+  text-align: right;
+}
+.theme span {
+  font-family: "Spartan", sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 13.44px;
+  color: #fff;
+  vertical-align: sub;
+}
+
+.display-input {
+  margin-top: 32px;
+}
+.display-input input {
+  box-sizing: border-box;
+  background-color: #181F33;
+  font-size: 48px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 53.76px;
+  letter-spacing: -0.8px;
+  text-align: right;
+  padding: 36px 32px;
+  border: none;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.keys-container {
+  padding: 32px;
+  background-color: #242D44;
+  grid-gap: 25px;
+  border-radius: 10px;
+  margin-top: 24px;
+}
+.keys-container button {
+  font-family: "Spartan", sans-serif;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  line-height: 35.84px;
+  padding: 10px 14px 14px 14px;
+  font-size: 32px;
+}
+.keys-container button:hover {
+  cursor: pointer;
+}
+.keys-container .keys {
+  background-color: #EAE3DC;
+  box-shadow: inset 0px -4px 0px #B3A497;
+  color: #434A59;
+  letter-spacing: -0.53px;
+}
+.keys-container .keys:hover {
+  background-color: #FFFFFE;
+}
+.keys-container .operator {
+  background-color: #647198;
+  box-shadow: inset 0px -4px 0px #414E73;
+  color: #fff;
+  font-size: 20px;
+  letter-spacing: -0.33px;
+}
+.keys-container .operator:hover {
+  background-color: #A2B2E1;
+}
+.keys-container .result {
+  background-color: #D03F2F;
+  box-shadow: inset 0px -4px 0px #93261A;
+  color: #fff;
+}
+.keys-container .result:hover {
+  background-color: #F96B5B;
 }
 
 /*# sourceMappingURL=style.css.map */

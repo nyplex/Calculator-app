@@ -1,11 +1,139 @@
 @import url('https://fonts.googleapis.com/css2?family=Spartan:wght@400;500;700&display=swap');
-$spartan: 'Spartan', sans-serif;
+$spartan: 'Spartan',
+sans-serif;
 
-.attribution {
-    font-size: 11px;
-    text-align: center;
+@for $i from 1 through 5 {
+    $col-start: 1 * $i;
+
+    .col-start-#{$i} {
+        grid-column-start: $col-start;
+    }
 }
 
-.attribution a {
-    color: hsl(228, 45%, 44%);
+@for $i from 1 through 5 {
+    $col-end: 1 * $i;
+
+    .col-end-#{$i} {
+        grid-column-end: $col-end;
+    }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: #3A4663;
+    font-family: $spartan;
+    font-weight: 700;
+}
+
+main {
+    display: flex;
+    height: 100%;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+}
+
+.main-container {
+    max-width: 540px;
+    margin: 50px auto;
+}
+
+.logo {
+    h1 {
+        margin: 0;
+        color: #fff;
+        font-size: 32px;
+        line-height: 35.84px;
+        letter-spacing: -0.53px;
+    }
+}
+
+.theme {
+    text-align: right;
+    span {
+        font-family: $spartan;
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 13.44px;
+        color: #fff;
+        vertical-align: sub;
+    }
+}
+
+.display-input {
+    margin-top: 32px;
+    input {
+        box-sizing: border-box;
+        background-color: #181F33;
+        font-size: 48px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 53.76px;
+        letter-spacing: -0.8px;
+        text-align: right;
+        padding: 36px 32px;
+        border: none;
+        border-radius: 10px;
+        width: 100%;
+    }
+}
+
+.keys-container {
+    padding: 32px;
+    background-color: #242D44;
+    grid-gap: 25px;
+    border-radius: 10px;
+    margin-top: 24px;
+
+    button {
+        font-family: $spartan;
+        font-weight: 700;
+        border: none;
+        border-radius: 10px;
+        line-height: 35.84px;
+        padding: 10px 14px 14px 14px;
+        font-size: 32px;
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+
+    .keys {
+        background-color: #EAE3DC;
+        box-shadow: inset 0px -4px 0px #B3A497;
+        color: #434A59;
+        letter-spacing: -0.53px;
+
+        &:hover {
+            background-color: #FFFFFE;
+        }
+    }
+
+    .operator {
+        background-color: #647198;
+        box-shadow: inset 0px -4px 0px #414E73;
+        color: #fff;
+        font-size: 20px;
+        letter-spacing: -0.33px;
+
+        &:hover {
+            background-color: #A2B2E1;
+        }
+    }
+
+    .result {
+        background-color: #D03F2F;
+        box-shadow: inset 0px -4px 0px #93261A;
+        color: #fff;
+
+        &:hover {
+            background-color: #F96B5B;
+        }
+    }
 }
