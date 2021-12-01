@@ -4,7 +4,6 @@ sans-serif;
 
 @for $i from 1 through 5 {
     $col-start: 1 * $i;
-
     .col-start-#{$i} {
         grid-column-start: $col-start;
     }
@@ -12,10 +11,18 @@ sans-serif;
 
 @for $i from 1 through 5 {
     $col-end: 1 * $i;
-
     .col-end-#{$i} {
         grid-column-end: $col-end;
     }
+}
+
+:root {
+    --body-bg: #3A4663;
+    --bg-keys: deepskyblue;
+}
+
+body.theme2 {
+    --bg-keys: deeppink;
 }
 
 body {
@@ -70,17 +77,35 @@ main {
     grid-template-rows: auto;
 }
 
-.theme {
-    text-align: right;
+.logo {
+    display: flex;
+    align-items: flex-end;
+}
 
+.theme {
+    display: flex;
+    justify-content: end;
+    align-items: center;
     span {
         font-size: 12px;
         line-height: 13.44px;
-        vertical-align: sub;
+        align-self: flex-end;
+        margin-bottom: 4px;
     }
 }
 
-input[type=range]{
+.input-theme-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.span-theme-container {
+    margin-left: 21px;
+    display: flex;
+    justify-content: space-around;
+}
+
+input[type=range] {
     -webkit-appearance: none;
     background-color: #242D44;
     width: 71px;
@@ -89,6 +114,7 @@ input[type=range]{
     border: none;
     padding-left: 5px;
     padding-right: 5px;
+    margin: 0 0 0 21px;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -107,7 +133,6 @@ input[type=range]:focus {
 
 .display-input {
     margin-top: 32px;
-
     input {
         box-sizing: border-box;
         background-color: #181F33;
@@ -126,43 +151,64 @@ input[type=range]:focus {
     background-color: #242D44;
     grid-gap: 25px;
     margin-top: 24px;
-
     button {
         border: none;
         padding: 10px 14px 14px 14px;
-
         &:hover {
             cursor: pointer;
         }
     }
+}
 
-    .keys {
-        background-color: #EAE3DC;
-        box-shadow: inset 0px -4px 0px #B3A497;
-        color: #53555a;
+.keys {
+    background-color: #EAE3DC;
+    box-shadow: inset 0px -4px 0px #B3A497;
+    color: #53555a;
+    &:hover {
+        background-color: #FFFFFE;
+    }
+}
 
-        &:hover {
-            background-color: #FFFFFE;
+.operator {
+    background-color: #647198;
+    box-shadow: inset 0px -4px 0px #414E73;
+    font-size: 20px;
+    letter-spacing: -0.33px;
+    &:hover {
+        background-color: #A2B2E1;
+    }
+}
+
+.result {
+    background-color: #D03F2F;
+    box-shadow: inset 0px -4px 0px #93261A;
+    &:hover {
+        background-color: #F96B5B;
+    }
+}
+
+@media screen and (max-width: 540px) {
+    .theme {
+        margin-right: 10px;
+    }
+    .logo {
+        margin-left: 10px;
+    }
+
+    .display-input {
+        input {
+            border-radius: 0;
         }
     }
 
-    .operator {
-        background-color: #647198;
-        box-shadow: inset 0px -4px 0px #414E73;
-        font-size: 20px;
-        letter-spacing: -0.33px;
-
-        &:hover {
-            background-color: #A2B2E1;
-        }
+    .keys-container {
+        border-radius: 0;
+        padding: 12px;
+        grid-gap: 18px;
+        margin-top: 15px;
     }
 
-    .result {
-        background-color: #D03F2F;
-        box-shadow: inset 0px -4px 0px #93261A;
-
-        &:hover {
-            background-color: #F96B5B;
-        }
+    .main-container {
+        margin: 7px auto 0 auto;
     }
 }
