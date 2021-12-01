@@ -21,7 +21,6 @@ sans-serif;
 body {
     margin: 0;
     padding: 0;
-    height: 100vh;
     background-color: #3A4663;
 }
 
@@ -57,7 +56,7 @@ button {
 
 main {
     display: flex;
-    height: 100%;
+    height: 90%;
 }
 
 .main-container {
@@ -80,6 +79,31 @@ main {
         vertical-align: sub;
     }
 }
+
+input[type=range]{
+    -webkit-appearance: none;
+    background-color: #242D44;
+    width: 71px;
+    height: 26px;
+    border-radius: 13px;
+    border: none;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #D03F2F;
+}
+
+input[type=range]:focus {
+    outline: none;
+}
+
+
 
 .display-input {
     margin-top: 32px;
