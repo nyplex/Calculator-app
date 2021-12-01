@@ -257,9 +257,22 @@ input[type=range]:focus {
         padding: 12px;
         grid-gap: 18px;
         margin-top: 15px;
+        background-color: transparent;
     }
 
     .main-container {
         margin: 7px auto 0 auto;
+    }
+}
+
+@media screen and(max-height: 610px) {
+    .main-container {
+        margin: 0 auto;
+    }
+    .logo {
+        display: none;
+    }
+    .theme {
+        display: none;
     }
 }
