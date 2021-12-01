@@ -47,14 +47,45 @@ let inputDecimal = (dot) => {
     }
 }
 
+let calculate = (firstOperand, operator, secondOperand) => {
+    switch (operator) {
+        case "+":
+            return firstOperand + secondOperand
+            break;
+        case "-":
+            return firstOperand - secondOperand
+            break;
+        case "/":
+            return firstOperand / secondOperand
+            break;
+        case "x":
+            return firstOperand * secondOperand
+            break;
+        default:
+            return secondOperand
+            break;
+    }
+    if(operator == "+"){
+        return firstOperand + secondOperand
+    }
+
+    return secondOperand
+}
+
 let handleOperator = (key) => {
-    const {firstOperand, valueToDisplay} = calculator
+    const {firstOperand, valueToDisplay, operator} = calculator
     const inputValue = parseFloat(valueToDisplay)
+    if(operator) {
+        result = calculate(firstOperand, operator, inputValue)
+        calculator.valueToDisplay = String(result)
+        calculator.firstOperand = result
+    }
     if(firstOperand == null && !isNaN(inputValue)) {
         calculator.firstOperand = inputValue
     }
     calculator.operator = key
     calculator.secondOperand = true
+    console.log(calculator);
 }
 
 const keysContainer = document.querySelector(".keys-container")
@@ -78,6 +109,7 @@ keysContainer.addEventListener("click", (e) => {
     }
     if(target.classList.contains("operator")) {
         handleOperator(target.value)
+        displayValue()
         return
     }
     if(target.classList.contains("keys")) {
