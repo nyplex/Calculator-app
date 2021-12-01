@@ -41,8 +41,14 @@ let inputDigit = (value) => {
 }
 
 let inputDecimal = (dot) => {
-    const {valueToDisplay} = calculator
+    const {valueToDisplay, secondOperand} = calculator
+    if(secondOperand) {
+        calculator.valueToDisplay = "0" + dot
+        calculator.secondOperand = false
+        return
+    }
     if(!valueToDisplay.includes(dot)) {
+        console.log("here");
         calculator.valueToDisplay = valueToDisplay + dot
     }
 }
@@ -65,19 +71,18 @@ let calculate = (firstOperand, operator, secondOperand) => {
             return secondOperand
             break;
     }
-    if(operator == "+"){
-        return firstOperand + secondOperand
-    }
-
-    return secondOperand
 }
 
 let handleOperator = (key) => {
-    const {firstOperand, valueToDisplay, operator} = calculator
+    const {firstOperand, valueToDisplay, operator, secondOperand} = calculator
     const inputValue = parseFloat(valueToDisplay)
+    if(operator && secondOperand) {
+        calculator.operator = key
+        return
+    }
     if(operator) {
         result = calculate(firstOperand, operator, inputValue)
-        calculator.valueToDisplay = String(result)
+        calculator.valueToDisplay = `${parseFloat(result.toFixed(7))}`
         calculator.firstOperand = result
     }
     if(firstOperand == null && !isNaN(inputValue)) {
@@ -85,7 +90,21 @@ let handleOperator = (key) => {
     }
     calculator.operator = key
     calculator.secondOperand = true
-    console.log(calculator);
+}
+
+let reset = () => {
+    calculator.firstOperand = null
+    calculator.operator = null
+    calculator.secondOperand = false
+    calculator.valueToDisplay = "0"
+}
+
+let del = (value) => {
+    if(calculator.valueToDisplay != "0") {
+        calculator.valueToDisplay = value.slice(0, -1)
+        return
+    }
+    return
 }
 
 const keysContainer = document.querySelector(".keys-container")
@@ -100,11 +119,13 @@ keysContainer.addEventListener("click", (e) => {
         return
     }
     if(target.classList.contains("clear")) {
-        console.log("All clear: " + target.value);
+        reset()
+        displayValue()
         return
     }
     if(target.classList.contains("delete")) {
-        console.log(("Del: " + target.value));
+        del(calculator.valueToDisplay)
+        displayValue()
         return
     }
     if(target.classList.contains("operator")) {
