@@ -31,6 +31,8 @@ let displayValue = () => {
 }
 
 let inputDigit = (value) => {
+    //when user enter a key digit, remove operator sign on display 
+    document.getElementById("operator_span").innerHTML = ""
     const {valueToDisplay, secondOperand} = calculator
     if(secondOperand == false) {
         calculator.valueToDisplay = valueToDisplay === "0" ? value : valueToDisplay + value
@@ -76,6 +78,8 @@ let calculate = (firstOperand, operator, secondOperand) => {
 let handleOperator = (key) => {
     const {firstOperand, valueToDisplay, operator, secondOperand} = calculator
     const inputValue = parseFloat(valueToDisplay)
+    //Display operator on display
+    if (key != "=") document.getElementById("operator_span").innerHTML = key
     if(operator && secondOperand) {
         calculator.operator = key
         return
