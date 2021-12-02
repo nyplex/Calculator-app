@@ -66,7 +66,7 @@ let calculate = (firstOperand, operator, secondOperand) => {
         case "/":
             return firstOperand / secondOperand
             break;
-        case "x":
+        case "*":
             return firstOperand * secondOperand
             break;
         default:
@@ -79,7 +79,7 @@ let handleOperator = (key) => {
     const {firstOperand, valueToDisplay, operator, secondOperand} = calculator
     const inputValue = parseFloat(valueToDisplay)
     //Display operator on display
-    if (key != "=") document.getElementById("operator_span").innerHTML = key
+    if (key != "Enter") document.getElementById("operator_span").innerHTML = key
     if(operator && secondOperand) {
         calculator.operator = key
         return
@@ -106,7 +106,6 @@ let reset = () => {
 let del = (value) => {
     if(calculator.valueToDisplay != "0" && calculator.firstOperand == null) {
         calculator.valueToDisplay = value.slice(0, -1)
-        console.log(calculator);
         return
     }
     if(calculator.firstOperand) {
@@ -114,44 +113,49 @@ let del = (value) => {
         calculator.firstOperand = null
         calculator.operator = null
         calculator.secondOperand = false
-        console.log(calculator);
         return
     }
     return
 }
 
-const keysContainer = document.querySelector(".keys-container")
-keysContainer.addEventListener("click", (e) => {
-    const {target} = e
-    if(!target.matches("button")) {
-        return
+const calcApp = (e) => {
+    if(e instanceof KeyboardEvent) {
+        var value = e.key
+    }else{
+        const {target} = e
+        var value = target.value
+        if(!target.matches("button")) {
+            return
+        }
     }
-    if(target.classList.contains("decimal")) {
-        inputDecimal(target.value)
-        displayValue()
-        return
+    switch (value) {
+        case "+":
+        case "-":
+        case "/":
+        case "*":
+        case "Enter":
+            handleOperator(value)
+            break
+        case ".":
+            inputDecimal(value)
+            break
+        case "c":
+            reset()
+            break
+        case "Delete":
+            del(calculator.valueToDisplay)
+            break
+        default:
+            if(Number.isInteger(parseFloat(value))){
+                inputDigit(value)
+                break
+            }else{
+                const stringValue = toString(value)
+                console.log(stringValue);
+            }
     }
-    if(target.classList.contains("clear")) {
-        reset()
-        displayValue()
-        return
-    }
-    if(target.classList.contains("delete")) {
-        del(calculator.valueToDisplay)
-        displayValue()
-        return
-    }
-    if(target.classList.contains("operator")) {
-        handleOperator(target.value)
-        displayValue()
-        return
-    }
-    if(target.classList.contains("keys")) {
-        inputDigit(target.value)
-        displayValue()
-        return
-    }
-})
+    displayValue()
+}
 
-
-displayValue()
+document.querySelector(".keys-container").addEventListener("click", calcApp)
+document.addEventListener("keydown", calcApp)
