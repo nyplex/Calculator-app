@@ -48,8 +48,8 @@ let inputDecimal = (dot) => {
         return
     }
     if(!valueToDisplay.includes(dot)) {
-        console.log("here");
         calculator.valueToDisplay = valueToDisplay + dot
+        return
     }
 }
 
@@ -100,8 +100,17 @@ let reset = () => {
 }
 
 let del = (value) => {
-    if(calculator.valueToDisplay != "0") {
+    if(calculator.valueToDisplay != "0" && calculator.firstOperand == null) {
         calculator.valueToDisplay = value.slice(0, -1)
+        console.log(calculator);
+        return
+    }
+    if(calculator.firstOperand) {
+        calculator.valueToDisplay = value.slice(0, -1)
+        calculator.firstOperand = null
+        calculator.operator = null
+        calculator.secondOperand = false
+        console.log(calculator);
         return
     }
     return
